@@ -1,0 +1,118 @@
+{{! Se va a insertar dentro de la plantilla main.handlebars   }}
+{{! Dismissable alert, if there is an alert message display an alert }}
+{{#if removedUser}}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    Usuario inactivo!
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+{{/if}}
+
+<div class="row">
+  <div class="col-6">
+    <h1>Usuarios</h1>
+  </div>
+  <div class="col-6 d-flex justify-content-end">
+    {{! Note that the /adduser is a GET request }}
+    <a href="/adduser" type="button" class="btn btn-primary align-self-center">
+    +Agregar</a>
+  </div>
+</div>
+
+<table class="table table-dark  table-bordered table-striped">
+  <thead class="thead-dark">
+    <tr class="text-center">
+      <th scope="col">
+        id
+      </th>
+      <th scope="col">
+        <a
+          href="/?sort=first_name&order=ASC"
+          type="button"
+          class="btn btn-outline-info"
+        ><i class="bi bi-caret-up"></i></a>
+        &nbsp Nombre &nbsp
+        <a
+          href="/?sort=first_name&order=DESC"
+          type="button"
+          class="btn btn-outline-info"
+        ><i class="bi bi-caret-down"></i></a>
+      </th>
+      <th scope="col">
+        <a
+          href="/?sort=last_name&order=ASC"
+          type="button"
+          class="btn btn-outline-info"
+        ><i class="bi bi-caret-up"></i></a>
+        &nbsp Apellido &nbsp
+        <a
+          href="/?sort=last_name&order=DESC"
+          type="button"
+          class="btn btn-outline-info"
+        ><i class="bi bi-caret-down"></i></a>
+      </th>
+      <!-- Repeat similar code for other columns -->
+      <th scope="col">
+        <a
+          href="/?sort=email&order=ASC"
+          type="button"
+          class="btn btn-outline-info"
+        ><i class="bi bi-caret-up"></i></a>
+        &nbsp Email &nbsp
+        <a
+          href="/?sort=email&order=DESC"
+          type="button"
+          class="btn btn-outline-info"
+        ><i class="bi bi-caret-down"></i></a>
+      </th>
+      <th scope="col">
+        <a
+          href="/?sort=phone&order=ASC"
+          type="button"
+          class="btn btn-outline-info"
+        ><i class="bi bi-caret-up"></i></a>
+        &nbsp TE &nbsp
+        <a
+          href="/?sort=phone&order=DESC"
+          type="button"
+          class="btn btn-outline-info"
+        ><i class="bi bi-caret-down"></i></a>
+      </th>
+      <th scope="col" style="width: 200px;">Acción</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {{! we will pass to the hbs file all the rows from the database }}
+    {{#each rows}}
+      <tr>
+        <th scope="row" class="text-center">{{this.id}}</th>
+        <td class="text-center">{{this.first_name}}</td>
+        <td class="text-center">{{this.last_name}}</td>
+        <td class="text-center">{{this.email}}</td>
+        <td class="text-center">{{this.phone}}</td>
+        <td class="text-center">
+          <a
+            href="/viewuser/{{this.id}}"
+            type="button"
+            class="btn btn-primary btn-small"
+          ><i class="bi bi-eye"></i>&nbsp</a>
+          <a
+            href="/edituser/{{this.id}}"
+            type="button"
+            class="btn btn-success btn-small"
+          ><i class="bi bi-pencil"></i>&nbsp</a>
+          <a
+            href="/{{this.id}}"
+            type="button"
+            class="btn btn-warning btn-small"
+          ><i class="bi bi-person-x"></i>&nbsp</a>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

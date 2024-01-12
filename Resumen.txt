@@ -1,0 +1,6 @@
+Youtube
+https://youtu.be/bLAPeYQs-BI?list=PLllYGT--13jUskB8dol6WByMZzSgV3zYL
+
+Este es el projecto orrginal de Raddy con los siguientes cambios
+ - Uso de Sequelize
+ - Uso de modulos

@@ -1,0 +1,100 @@
+{{! // navigaton breadcrumb }}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">New User</li>
+  </ol>
+</nav>
+
+{{! Dismissable alert, if there is an alert message display an alert }}
+{{#if alert}}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{alert}}
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+{{/if}}
+
+{{! input form.  Note that the adduser is a POST request }}
+<form
+  class="row g-3 needs-validation"
+  method="POST"
+  action="/adduser"
+  novalidate
+>
+  <div class="col-6">
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        value="{{this.first_name}}"
+        placeholder="First name"
+        name="first_name"
+      />
+      <label for="floatingInput">First Name</label>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        value="{{this.last_name}}"
+        placeholder="First name"
+        name="last_name"
+      />
+      <label for="floatingInput">Last Name</label>
+    </div>
+  </div>
+  {{! Create another line }}
+
+  <div class="col-6">
+    <div class="form-floating mb-3">
+      <input
+        type="email"
+        class="form-control"
+        id="floatingInput"
+        value="{{this.email}}"
+        placeholder="mail@mail.com"
+        name="email"
+      />
+      <label for="floatingInput">Email</label>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        value="{{this.phone}}"
+        placeholder="Phone"
+        name="phone"
+      />
+      <label for="floatingInput">Phone</label>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="form-floating mb-3">
+      <textarea
+        class="form-control"
+        id="comments"
+        value="{{this.first-name}}"
+        placeholder="Leave a comment"
+        name="comments"
+        style="height:200px"
+      >{{this.comments}}</textarea>
+      <label for="comments">Comments</label>
+    </div>
+  </div>
+
+  <div class="col-12 d-grid">
+    <button class="btn btn-primary" type="submit">Submit</button>
+  </div>
+</form>

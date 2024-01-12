@@ -1,0 +1,102 @@
+{{!-- The edit user form don't use the form that we created inside user-forms --}}
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Edit User</li>
+  </ol>
+</nav>
+
+{{! Dismissable alert, if there is an alert message display an alert }}
+{{#if alert}}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{alert}}
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+{{/if}}
+
+<form
+  class="row g-3 needs-validation"
+    {{!-- the method of the form is a POST in order to update the user in the database --}}
+  method="POST"
+    {{!-- the data we get from the edit controller is user.dataValues.id --}}
+  action="/edituser/{{user.dataValues.id}}"
+  novalidate
+>
+  <div class="col-6">
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        value="{{user.dataValues.first_name}}"
+        placeholder="First name"
+        name="first_name"
+      />
+      <label for="floatingInput">First Name</label>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        value="{{user.dataValues.last_name}}"
+        placeholder="First name"
+        name="last_name"
+      />
+      <label for="floatingInput">Last Name</label>
+    </div>
+  </div>
+  {{! Create another line }}
+
+  <div class="col-6">
+    <div class="form-floating mb-3">
+      <input
+        type="email"
+        class="form-control"
+        id="floatingInput"
+        value="{{user.dataValues.email}}"
+        placeholder="mail@mail.com"
+        name="email"
+      />
+      <label for="floatingInput">Email</label>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        value="{{user.dataValues.phone}}"
+        placeholder="Phone"
+        name="phone"
+      />
+      <label for="floatingInput">Phone</label>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="form-floating mb-3">
+      <textarea
+        class="form-control"
+        id="comments"
+        value="{{user.dataValues.comments}}"
+        placeholder="Leave a comment"
+        name="comments"
+        style="height:200px"
+      >{{user.dataValues.comments}}</textarea>
+      <label for="comments">Comments</label>
+    </div>
+  </div>
+
+  <div class="col-12 d-grid">
+    <button class="btn btn-primary" type="submit">Submit</button>
+  </div>
+</form>
